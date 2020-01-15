@@ -1,20 +1,28 @@
 {
   "name": "selectqb",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "antd": "^3.26.7",
+    "customize-cra": "^0.9.1",
     "react": "^16.12.0",
+    "react-app-rewired": "^2.1.5",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build-examples": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build": "rimraf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +38,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.0",
+    "@babel/cli": "^7.2.3",
+    "babel-preset-react-app": "^7.0.1",
+    "rimraf": "^2.6.3"
+  },
+  "author": "Nitin Sharma <nitinbrains@gmail.com>"
 }
